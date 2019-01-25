@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+/src/.vs/MarcoLogger/v15
+/src/Marco.Logger/obj/Debug/netstandard2.0
+/src/Marco.Logger/obj
