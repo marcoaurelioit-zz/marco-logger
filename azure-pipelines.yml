@@ -15,8 +15,8 @@ variables:
   buildConfiguration: 'Release'
 
   ##Logger
-  Pack1Version: '1.0.0'
-  Pack1PushToNuget: True
+  Pack1Version: '1.0.1'
+  Pack1PushToNuget: False
 
 steps:
 # Install NuGet Tool
@@ -50,7 +50,7 @@ steps:
   inputs:
     command: publish
     publishWebProjects: False
-    projects: '**/**/Marco.Logger.*.csproj'
+    projects: '**/**/Marco.*.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: False
 
