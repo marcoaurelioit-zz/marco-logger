@@ -15,7 +15,7 @@ variables:
   buildConfiguration: 'Release'
 
   ##Logger
-  Pack1Version: '1.2.0'
+  Pack1Version: '1.1.0'
   Pack1PushToNuget: True
 
 steps:
@@ -50,7 +50,7 @@ steps:
   inputs:
     command: publish
     publishWebProjects: False
-    projects: '**/**/Marco.*.csproj'
+    projects: '**/**/Marco.Logger.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: False
 
@@ -66,7 +66,7 @@ steps:
     command: pack
     packagesToPack: '**/**/Marco.Logger.csproj'
     versioningScheme: byEnvVar
-    versionEnvVar: Pack2Version
+    versionEnvVar: Pack1Version
 - task: NuGetCommand@2
   displayName: Push Marco.Logger to NuGet.org
   condition: eq(variables['Pack1PushToNuget'], 'True')
