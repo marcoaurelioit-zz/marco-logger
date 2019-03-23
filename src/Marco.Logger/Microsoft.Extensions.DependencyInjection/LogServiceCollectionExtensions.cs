@@ -26,7 +26,7 @@ namespace Microsoft.Extensions.DependencyInjection
                         .MinimumLevel.Override("System", LogEventLevel.Error)
                         .MinimumLevel.Override("Microsoft", LogEventLevel.Error)
                         .MinimumLevel.Override("Marco", LogEventLevel.Warning)
-                        .ReadFrom.Configuration(configuration.GetSection(nameof(LogConfiguration)))
+                        .ReadFrom.Configuration(configuration)
                         .Enrich.WithExceptionDetails();
 
                     if (logConfiguration.LogWriteType != LogWriteType.Custom)
@@ -44,13 +44,10 @@ namespace Microsoft.Extensions.DependencyInjection
                         else
                             loggerConfiguration = loggerConfiguration.WriteTo.Async(a => a.Console(new JsonFormatter()));
                     }
-
                     services.AddLogging(c =>
                     {
                         c.ClearProviders();
-
                         Log.Logger = loggerConfiguration.CreateLogger();
-
                         c.AddSerilog();
                     });
                     break;
